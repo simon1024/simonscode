@@ -98,7 +98,9 @@ function addScore() {
             success: function(data){
                 var status = data.status;
                 if(status == 'ok'){
-                    window.location.href = '/supplier/listAll';
+                    // window.location.href = '/supplier/listAll';
+                    path = document.referrer.split('/supplier')[1];
+                    window.location.href = '/supplier' + path;
                 }else{
                     alert(data.msg);
                 }

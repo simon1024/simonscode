@@ -154,7 +154,8 @@
                 <td colspan="3">
                   {totalScore}
                   <b>TTL Scoring: </b>{total}<br/>
-                  <b>Awarde Total Value: </b>{sum}
+                  <b>Awarded Total Value: </b>{awardedTotal}<br/>
+                  <b>Inquiry: </b>{inquiry}
                   {/totalScore}
                 </td>
               </tr>
@@ -168,7 +169,7 @@
                   <b>User name: </b><?php echo $comment['evaluator']; ?><br/>
                   <b>date: </b><?php echo $comment['addTime']; ?>
                 </td>
-                <td colspan="2"><b>inqired Product: </b><?php echo $comment['inquiredProduct']; ?></td>
+                <td colspan="2"><b>Inqired Product: </b><?php echo $comment['inquiredProduct']; ?></td>
               </tr>
               <tr>
                 <td colspan="2"><b>Project Name: </b><?php echo $comment['projectName']; ?></td>
@@ -178,16 +179,16 @@
                 <td colspan="1"><b>project Period: </b><?php echo $comment['projectTime']; ?></td>
               </tr>
               <tr>
-                <td colspan="1"><b>Capability: </b><?php echo $comment['capability']; ?></td>
-                <td colspan="1"><b>Quality: </b><?php echo $comment['quality']; ?></td>  
+                <td colspan="1"><b>Capability(20%): </b><?php echo $comment['capability']; ?></td>
+                <td colspan="1"><b>Quality(25%): </b><?php echo $comment['quality']; ?></td>  
               </tr>
               <tr>  
-                <td colspan="1"><b>Compliance: </b><?php echo $comment['compliance']; ?></td> 
-                <td colspan="1"><b>Financial: </b><?php echo $comment['financial']; ?></td> 
+                <td colspan="1"><b>Compliance(10%): </b><?php echo $comment['compliance']; ?></td> 
+                <td colspan="1"><b>Financial(20%): </b><?php echo $comment['financial']; ?></td> 
               </tr>
               <tr>
-                <td colspan="1"><b>Cooperation: </b><?php echo $comment['cooperation']; ?></td> 
-                <td colspan="1"></td>
+                <td colspan="1"><b>Cooperation(25%): </b><?php echo $comment['cooperation']; ?></td> 
+                <td colspan="1"><b>Summary(5): </b><?php echo $comment['total']; ?></td>
               </tr>  
               <tr>
                 <td>
@@ -202,6 +203,13 @@
                 <td colspan="2"><b>Comments(satifactory, unsatisfactory): </b><?php echo $comment['comments']; ?></br>
                 </td>
               </tr>
+              <?php 
+                 $user = CI_Controller::getSessionUserInfo();
+                 $userName = $user['username'];
+                 $evaluator = $comment['evaluator'];
+                 $roleId = $user['role'];
+                 if($roleId==1 || $roleId ==7 || $userName == $evaluator){
+                 ?>
               <tr>
                 <td colspan="6" style="align:right">
                   <div align="right">
@@ -213,6 +221,9 @@
                   </div>
                 </td>
               </tr>
+              <?php
+                 }
+                 ?>
             </table>
             <?php
                }
@@ -240,6 +251,30 @@ function evaluateSupplier(){
 
 function toList(){
     window.history.go(-1);
+}
+
+function toDelComment(id){
+    if(!confirm("确定要删除该comment吗？")){
+        return false;
+    }
+
+    var sid = $('#hidden_sid').val();
+    var param = {"id":id, "sid":sid};
+    $.ajax({
+      url:"/supplier/delComment/"+id+"?time="+ (new Date()).getTime(),
+      type:"post",
+      data:param,
+      dataType:"json",
+      success: function(data){
+                var status = data.status;
+                if(status == 'ok'){
+                    alert('删除comment成功');
+                    window.location.reload(true);
+                }else{
+                    alert(data.msg);
+                }
+      }
+    });
 }
 </script>
 

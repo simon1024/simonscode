@@ -76,7 +76,7 @@
                 <th colspan=1> Qualification(if any): </th>
                 <td colspan=5> 
                    <div class='span2'><label class="radio"><input type="radio" name="qualification" value="1" /> Supplier Survey </label></div>
-                   <div class='span2'><label class="radio"><input type="radio" name="qualification" value="2" /> Pre-Qotation </label></div>
+                   <div class='span2'><label class="radio"><input type="radio" name="qualification" value="2" /> Pre-Quotation </label></div>
                    <div class='span2'><label class="radio"><input type="radio" name="qualification" value="3" /> End User Inquiry </label></div>
                    <div class='span2'><label class="radio"><input type="radio" name="qualification" value="3" /> Others </label></div>
                 </td>
@@ -96,20 +96,20 @@
                 <th colspan=3> Evaluation Standards </th>
                 </tr>
                 <tr>
-                <th colspan=1> Capability: </th>
+                <th colspan=1> Capability(20%): </th>
                 <td colspan=2> 
                    <div class='row-fluid'>
                    <div class='span2'><label class="radio"><input id="capability1" type="radio" name="capability" value="1" /> 1 </label></div>
                    <div class='span2'><label class="radio"><input id="capability2" type="radio" name="capability" value="2" /> 2 </label></div>
                    <div class='span2'><label class="radio"><input id="capability3" type="radio" name="capability" value="3" /> 3 </label></div>
                    <div class='span2'><label class="radio"><input id="capability4" type="radio" name="capability" value="4" /> 4 </label></div>
-                   <div class='span2'><label class="radio"><input id="capability5" type="radio" name="technology" value="5" /> 5 </label></div>
+                   <div class='span2'><label class="radio"><input id="capability5" type="radio" name="capability" value="5" /> 5 </label></div>
                    </div>
                 </td>
                 <td colspan=3> License and Code, R&D and Technical Capability, Facility &Staff, Production Availability, Logistics, Information System </td>
                 </tr>
                 <tr>
-                <th colspan=1> Compliance:</th>
+                <th colspan=1> Compliance(10%):</th>
                 <td colspan=2> 
                    <div class='row-fluid'>
                    <div class='span2'><label class="radio"><input id="compliance1" type="radio" name="compliance" value="1" /> 1 </label></div>
@@ -122,7 +122,7 @@
                 <td colspan=3> Comply with local regulation, such as Anti-corruption, SHE Performance, IPP,etc.</td>
                 </tr>
                 <tr>
-                <th colspan=1> Financial:</th>
+                <th colspan=1> Financial(20%):</th>
                 <td colspan=2> 
                    <div class='row-fluid'>
                    <div class='span2'><label class="radio"><input id="financial1" type="radio" name="financial" value="1" /> 1 </label></div>
@@ -135,20 +135,20 @@
                 <td colspan=3> Price, Payment term, Warranty, Financial Health </td>
                 </tr>
                 <tr>
-                <th colspan=1> Quality:</th>
+                <th colspan=1> Quality(25%):</th>
                 <td colspan=2> 
                    <div class='row-fluid'>
-                   <div class='span2'><label class="radio"><input id="radio1" type="radio" name="quality" value="1" /> 1 </label></div>
-                   <div class='span2'><label class="radio"><input id="radio2" type="radio" name="quality" value="2" /> 2 </label></div>
-                   <div class='span2'><label class="radio"><input id="radio3" type="radio" name="quality" value="3" /> 3 </label></div>
-                   <div class='span2'><label class="radio"><input id="radio4" type="radio" name="quality" value="4" /> 4 </label></div>
-                   <div class='span2'><label class="radio"><input id="radio5" type="radio" name="quality" value="5" /> 5 </label></div>
+                   <div class='span2'><label class="radio"><input id="quality1" type="radio" name="quality" value="1" /> 1 </label></div>
+                   <div class='span2'><label class="radio"><input id="quality2" type="radio" name="quality" value="2" /> 2 </label></div>
+                   <div class='span2'><label class="radio"><input id="quality3" type="radio" name="quality" value="3" /> 3 </label></div>
+                   <div class='span2'><label class="radio"><input id="quality4" type="radio" name="quality" value="4" /> 4 </label></div>
+                   <div class='span2'><label class="radio"><input id="quality5" type="radio" name="quality" value="5" /> 5 </label></div>
                    </div>
                 </td>
                 <td colspan=3>  QA/QC System, Documents Control, Product Quality, Product Performance</td>
                 </tr>
                 <tr>
-                <th colspan=1> Cooperation & Service:</th>
+                <th colspan=1> Cooperation & Service(25%):</th>
                 <td colspan=2> 
                    <div class='row-fluid'>
                    <div class='span2'><label class="radio"><input id="cooperation1" type="radio" name="cooperation" value="1" /> 1 </label></div>
@@ -158,7 +158,7 @@
                    <div class='span2'><label class="radio"><input id="cooperation5" type="radio" name="cooperation" value="5" /> 5 </label></div>
                    </div>
                 </td>
-                <td colspan=3> Management commitment, Management commitment, Good Correspondence & Communication, Full filling of delivery obligations, Aftersales service </td>
+                <td colspan=3> Management commitment, Good Correspondence & Communication, Fullfill of delivery obligations, Aftersales service </td>
                 </tr>
                 <tr>
                 <th colspan=1> COMMENTS(satisfactory, unsatisfactory): </th>
@@ -166,7 +166,8 @@
                 </tr>
             </tbody>
         </table>
-        <div class="form-actions">
+    </form>
+        <div>
         <button class="btn btn-primary" type="button" id="addScore_btn" onclick="addScore();">
         <i class="icon-ok bigger-110"></i>
         Submit
@@ -177,7 +178,6 @@
         Back
         </button>
         </div>
-    </form>
 </div> <!--  page-content end -->
 </div>
 
@@ -189,22 +189,20 @@ function getInquiry(obj) {
     var num = 6;
     if(inquiry==1) {
         for(i=1; i < num; i++) {
-            $('#technology'+i).removeAttr("disabled");
+            $('#capability'+i).removeAttr("disabled");
             $('#compliance'+i).removeAttr("disabled");
             $('#financial'+i).removeAttr("disabled");
-            $('#productivity'+i).removeAttr("disabled");
-            $('#design'+i).removeAttr("disabled");
-            $('#language'+i).removeAttr("disabled");
+            $('#quality'+i).removeAttr("disabled");
+            $('#cooperation'+i).removeAttr("disabled");
         }
         $('#comment').removeAttr("disabled");
     }else {
         for(i=0; i < num; i++) {
-            $('#technology'+i).attr("disabled", "disabled");
+            $('#capability'+i).attr("disabled", "disabled");
             $('#compliance'+i).attr("disabled", "disabled");
             $('#financial'+i).attr("disabled", "disabled");
-            $('#productivity'+i).attr("disabled", "disabled");
-            $('#design'+i).attr("disabled", "disabled");
-            $('#language'+i).attr("disabled", "disabled");
+            $('#quality'+i).attr("disabled", "disabled");
+            $('#cooperation'+i).attr("disabled", "disabled");
         }
         $('#comment').attr("disabled", "disabled");
     }

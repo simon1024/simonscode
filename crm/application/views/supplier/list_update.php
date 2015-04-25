@@ -96,7 +96,7 @@
                             <th>项目编号</th>
                             <th>项目名称</th>
                             <th class="hidden-480">项目类型</th>
-                            <th class="hidden-phone">项目经理</th>
+                            <th class="hidden-480">项目经理</th>
                             <th class="hidden-480">完成百分比</th>
                             <!-- add -->
                             <th class="hidden-480">项目状态</th>
@@ -168,12 +168,6 @@
             </div>
         </div>
         <!-- pagenation end -->
-
-
-
-
-
-
 
     </div> <!--  page-content end -->
 </div>

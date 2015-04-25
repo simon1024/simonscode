@@ -8,7 +8,7 @@
             <a href="/supplier/listAll">供应商管理</a><span class="divider"> <i class="icon-angle-right"></i> </span>
         </li>
         <li class="active">编辑供应商</li>
-        </ul><!--.breadcrumb-->
+        </ul>
     </div>
 
 <div id="page-content" class="clearfix">
@@ -28,7 +28,7 @@
         <div class="span6" style='width:100%'> <!-- span6 start -->
             <div class="tabbable">
                 <ul class="nav nav-tabs" id="myTab">
-                    <li id='li_supplier_basic' class="active">
+                    <li id='li_supplier_basic' class='active'>
                         <a data-toggle="tab" href="#supplier_basic"><i class="green icon-home bigger-110"></i>Supplier Information</a>
                     </li>
                     <li id='li_supplier_score'>
@@ -66,9 +66,9 @@
                               </tr>
                               <tr>
                                 <th>Registered Capital:</th>
-                                <td><input type="text" name="capital" value={capital}></td>
+                                <td><input type="text" name="capital" value="{capital}"></td>
                                 <th>Number of staff:</th>
-                                <td><input type="text" name="staffNum" value={staffNum}></td>
+                                <td><input type="text" name="staffNum" value="{staffNum}"></td>
                               </tr>
                               <tr>
                                 <th>Vendor Type:</th>
@@ -124,35 +124,35 @@
                               </tr>
                               <tr>
                                 <th>Contact Person's 1</th>
-                                <td><input type="text" name="contactor1" value={contactor1}></td>
+                                <td><input type="text" name="contactor1" value="{contactor1}"></td>
                                 <th>Position:</th>
-                                <td><input type="text" name="position1" value={position1}></td>
+                                <td><input type="text" name="position1" value="{position1}"></td>
                               </tr>
                               <tr>          
                                 <th> Tel No: </th>
-                                <td> <input type="text" name="telPhone1" value={telPhone1}></td>
+                                <td> <input type="text" name="telPhone1" value="{telPhone1}"></td>
                                 <th> Cell No: </th>
-                                <td> <input type="text" name="cellPhone1" value={cellPhone1}></td>
+                                <td> <input type="text" name="cellPhone1" value="{cellPhone1}"></td>
                               </tr>
                               <tr>
                                 <th>Fax No:</th>
-                                <td><input type="text" name="fax1" value={fax1}></td>
+                                <td><input type="text" name="fax1" value="{fax1}"></td>
                                 <th>E-Mail:</th>
                                 <td><input type="text" name="mail1" value="{mail1}"></td>
                               </tr>
                               <th>Contact Person's 2</th>
-                              <td><input type="text" name="contactor2" value={contactor2}></td>
+                              <td><input type="text" name="contactor2" value="{contactor2}"></td>
                               <th>Position:</th>
-                              <td><input type="text" name="position2" value={position2}></td>
+                              <td><input type="text" name="position2" value="{position2}"></td>
                               <tr>
                                 <th> Tel No: </th>
-                                <td> <input type="text" name="telPhone2" value={telPhone2}></td>
+                                <td> <input type="text" name="telPhone2" value="{telPhone2}"></td>
                                 <th> Cell No: </th>
-                                <td> <input type="text" name="cellPhone2" value={cellPhone2}></td>
+                                <td> <input type="text" name="cellPhone2" value="{cellPhone2}"></td>
                               </tr>
                               <tr>
                                 <th>Fax No:</th>
-                                <td><input type="text" name="fax2" value={fax2}></td>
+                                <td><input type="text" name="fax2" value="{fax2}"></td>
                                 <th>E-Mail:</th>
                                 <td><input type="text" name="mail2" value="{mail2}"></td>
                               </tr>
@@ -195,7 +195,8 @@
                             <td colspan="3">
                               {totalScore}
                               <b>TTL Scoring: </b>{total}<br/>
-                              <b>Awarde Total Value: </b>{sum}
+                              <b>Awarded Total Value: </b>{awardedTotal}<br/>
+                              <b>Inquiry: </b>{inquiry}
                               {/totalScore}
                             </td>
                           </tr>
@@ -209,7 +210,7 @@
                               <b>User name: </b><?php echo $comment['evaluator']; ?><br/>
                               <b>date: </b><?php echo $comment['addTime']; ?>
                             </td>
-                            <td colspan="2"><b>inqired Product: </b><?php echo $comment['inquiredProduct']; ?></td>
+                            <td colspan="2"><b>Inqired Product: </b><?php echo $comment['inquiredProduct']; ?></td>
                           </tr>
                           <tr>
                             <td colspan="2"><b>Project Name: </b><?php echo $comment['projectName']; ?></td>
@@ -219,16 +220,16 @@
                             <td colspan="1"><b>project Period: </b><?php echo $comment['projectTime']; ?></td>
                           </tr>
                           <tr>
-                            <td colspan="1"><b>Capability: </b><?php echo $comment['capability']; ?></td>
-                            <td colspan="1"><b>Quality: </b><?php echo $comment['quality']; ?></td>  
+                            <td colspan="1"><b>Capability(20%): </b><?php echo $comment['capability']; ?></td>
+                            <td colspan="1"><b>Quality(25%): </b><?php echo $comment['quality']; ?></td>  
                           </tr>
                           <tr>  
-                            <td colspan="1"><b>Compliance: </b><?php echo $comment['compliance']; ?></td> 
-                            <td colspan="1"><b>Financial: </b><?php echo $comment['financial']; ?></td> 
+                            <td colspan="1"><b>Compliance(10%): </b><?php echo $comment['compliance']; ?></td> 
+                            <td colspan="1"><b>Financial(20%): </b><?php echo $comment['financial']; ?></td> 
                           </tr>
                           <tr>
-                           <td colspan="1"><b>Cooperation: </b><?php echo $comment['cooperation']; ?></td> 
-                           <td colspan="1"></td>
+                           <td colspan="1"><b>Cooperation(25%): </b><?php echo $comment['cooperation']; ?></td> 
+                           <td colspan="1"><b>Summary(5): </b><?php echo $comment['total']; ?></td>
                           </tr>  
                           <tr>
                             <td>
@@ -270,18 +271,7 @@
 </div>
 
 <script src="/resource/js/my/supplier.js"></script>
-<script>
-$(function(){ 
-    var companyType = $('#sel_company_type').attr('sel_val');
-    var familyId = $('#sel_family_id').attr('sel_val');
-    var categoryId = $('#sel_category_id').attr('sel_val');
-    var vendorProperty = $('#sel_vendor_property').attr('sel_val');
-    $('#sel_company_type').val(companyType);
-    $('#sel_family_id').val(familyId);
-    $('#sel_vendor_property').val(vendorProperty);
 
-});
-</script>
 
 <script>
 <?php
@@ -292,7 +282,25 @@ foreach($categoryOfFamily as $familyId=>$allCategory){
     }
 }
 ?>
+var categoryId = $('#sel_category_id').attr('sel_val');
+var familyId = $('#sel_family_id').attr('sel_val');
+var html = '<select id="sel_category_id" name="category">';
+html += '<option value="0">please select ...</option>';
+html += eval('category_'+familyId);
+html += '</select>';
+$('#category').html(html);
+
+$('#sel_category_id').val(categoryId);
+$(function(){ 
+    var companyType = $('#sel_company_type').attr('sel_val');
+    var familyId = $('#sel_family_id').attr('sel_val');
+    var vendorProperty = $('#sel_vendor_property').attr('sel_val');
+    $('#sel_company_type').val(companyType);
+    $('#sel_family_id').val(familyId);
+    $('#sel_vendor_property').val(vendorProperty);
+});
 </script>
+
 <script>
 function changeCategoryList(obj){
     var familyId = $(obj).val();
@@ -309,7 +317,7 @@ function evaluateSupplier(){
 }
 
 function toList(){
-	window.history.go(-1);
+    window.history.go(-1);
 }
 
 function toDelComment(id){

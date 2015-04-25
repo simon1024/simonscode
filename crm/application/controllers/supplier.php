@@ -65,7 +65,7 @@ class Supplier extends CI_Controller {
     }
 
     public function listAll(){
-        //show_error("test listAll");
+        /* show_error("test listAll"); */
         $data = array();
         $filter = array();
 
@@ -109,6 +109,12 @@ class Supplier extends CI_Controller {
         $data['total'] = $totalCount;
         $data['supplierList'] = $this->supplier_model->getListBaseInfo($filter,$offset, $pageSize);
         $data['companyTypeList'] = $this->dict_model->getDictList('CompanyType');
+        $data['sno'] = $sno;
+        $data['name'] = $name;
+        $data['product'] = $product;
+        $data['pname'] = $pname;
+        $data['ptype'] = $ptype;
+        $data['others'] = $others;
         //show_error(implode(',', array_keys($data['supplierList'][0])));
         $this->load->library('parser');
         $this->load->view('templates/header', $data);
@@ -191,19 +197,20 @@ class Supplier extends CI_Controller {
 
     }
     
-    // 删除供应商: 只有人事管理员 & 超级管理人员有权限操作.
+    // 删除供应商: 只有supplier管理员 & 超级管理人员有权限操作.
     public function del(){
         $sid = $this->input->post('id');
         $sid = intval($sid);
         //
         $user = $this->getSessionUserInfo();
         $roleId = $user['role'];
-        if($roleId !=1 &&  $roleId !=2){
-            $result = array('status'=>'no', 'msg'=>'权限不足，只有it人员有删除员工权限。');
+        if($roleId !=1 &&  $roleId !=7){
+            $result = array('status'=>'no', 'msg'=>'权限不足，只有supplier管理员 & 超级管理人员有权限操作.');
             echo json_encode($result);
             exit;
         }
         $result = $this->supplier_model->delById($sid);
+        $result = $this->score_model->delBySupplierId($sid);
         echo json_encode($result);
         exit;
     }

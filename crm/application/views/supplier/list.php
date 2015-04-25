@@ -63,7 +63,16 @@
                 <td style="text-align:right;">
                   <button class="btn btn-small btn-primary" id="advanceSupplierQuery" onclick="searchSupplier()">Search</button>
                   <!-- <button class="btn btn-small btn-info" id="resetSupplierQuery" onclick="resetSearch()">Reset</button> -->
+                  <?php 
+                     $user = CI_Controller::getSessionUserInfo();
+                     $roleId = $user['role'];
+                     $deptId = $user['department'];
+                     if($roleId==1 || $roleId ==7){
+                     ?>
                   <button class="btn btn-small btn-primary" onclick="exportSupplier()"><i class=" icon-download bigger-120"></i>export</button>
+                  <?php
+                     }
+                     ?>
                 </td>
               </tr>
             </tbody>
@@ -82,6 +91,7 @@
                             <th>Major Product</th>
                             <th>Location</th>
                             <th>Scoring</th>
+                            <th>Inquired</th>
                             <?php 
                                 $user = CI_Controller::getSessionUserInfo();
                                 $roleId = $user['role'];
@@ -104,16 +114,18 @@
                             <td>{service}</td>
                             <td>{city}</td>
                             <td>{score}</td>
+                            <td>{inquiryCount}</td>
+                            <!-- <td>{inquiryCount}</td> -->
                             <td style="text-align:center;width:120px;" style="text-decoration:none">
                                 <a href="#" class="tooltip-info" data-rel="tooltip" title="" data-placement="left" data-original-title="浏览"  onclick="toViewSupplier({id})" style="text-decoration:none">
                                     <span class="info"><i class="icon-eye-open  bigger-120"></i></span>
                                 </a>
                                 &nbsp;&nbsp;
-                            <!--?php 
+                            <?php 
                                 $user = CI_Controller::getSessionUserInfo();
                                 $roleId = $user['role'];
-                                if($roleId==1 || $roleId ==2){
-                                ?-->
+                                if($roleId==1 || $roleId ==7){
+                               ?>
                                 <a href="#" class="tooltip-success" data-rel="tooltip" title="" data-placement="left" data-original-title="编辑"  onclick="toUpdateSupplier({id})" style="text-decoration:none">
                                     <span class="green"><i class="icon-edit bigger-120"></i></span>
                                 </a>
@@ -122,10 +134,10 @@
                                     <span class="red"><i class="icon-trash bigger-120"></i></span>
                                 </a>
                             </td>
-                            <!--?php
+                            <?php
 
                                 }
-                            ?-->
+                            ?>
 
                         </tr>
                         {/supplierList}
@@ -205,7 +217,7 @@ function exportSupplier() {
     var pname = $('#search_pname').val();
     var ptype = $('#search_ptype').val();
     var others = $('#search_others').val();
-    var url = '/supplier/export?sno'+sno+'&name='+ name +'&product=' + product 
+    var url = '/supplier/export?sno='+sno+'&name='+ name +'&product=' + product 
              + '&pname=' + pname + '&ptype=' + ptype + '&others=' + others;
     window.location.href = url;
 }
@@ -216,7 +228,18 @@ function resetSearch() {
     $('#search_pname').val('');
     $('#search_others').val('');
     $('#search_ptype').val(0);
+    $('#search_sno').val('');
 }
 
 
+</script>
+<script>
+$(function(){ 
+    $('#search_name').val('{name}');
+    $('#search_product').val('{product}');
+    $('#search_pname').val('{pname}');
+    $('#search_others').val('{others}');
+    $('#search_ptype').val({ptype});
+    $('#search_sno').val('{sno}');
+});
 </script>
